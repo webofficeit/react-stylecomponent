@@ -8,7 +8,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   questionTitle: {
     id: 'app.componets.Question.header',
-    defaultMessage: `ComposeQuestion`,
+    defaultMessage: `Compose Question`,
   },
   list: {
     id: 'app.components.Question.list',

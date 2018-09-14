@@ -3,9 +3,12 @@ import { FormattedMessage } from 'react-intl';
 
 import styled from 'styled-components';
 import messages from './messages';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Editor } from '@tinymce/tinymce-react';
+import Choicetext from './choicetext';
+import P from './p';
 
 
 const Choiceitemlist = styled.div`
@@ -22,12 +25,7 @@ const Choiceiconlist = styled.div`
         text-align: center;
 `;
 
-const Choicetext = styled.div`
-    outline: 2px solid #2276d2;  
-    float: left;
-    width: 90%;
-    width: calc(100% - 90px);   
-`;
+
 
 const Choicedel = styled.div`
 cursor: pointer;
@@ -51,7 +49,10 @@ export default class ChoiceItem extends React.Component {
            <FontAwesomeIcon icon={faBars} />
            </Choiceiconlist>
            <Choicetext>
-           <Editor inline  initialValue=""   init={{menubar: false}} />
+               
+               <Editor inline tagName="div"  initialValue=""   init={{menubar: false}} />
+               
+           
            </Choicetext>
            
            <Choicedel>

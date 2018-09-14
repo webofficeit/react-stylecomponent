@@ -44,9 +44,7 @@ export default class HomePage extends React.PureComponent {
        
 
       </div>
-      // <h1>
-      //  Favorite Food: <FontAwesomeIcon icon={faCoffee} />
-      // </h1>
+      
       
       
     );
