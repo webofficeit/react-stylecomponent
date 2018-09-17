@@ -7,16 +7,22 @@ import HeaderTitleIcon from './headertitleicon';
 import ActionButton from './actionbutton';
 import Anchor from './anchor';
 import messages from './messages';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUndo, faRedo, faListUl, faQuestionCircle, faEdit, faEye } from '@fortawesome/free-solid-svg-icons';
 import H2 from 'components/H2';
+
+
+const Clearfixheader = styled.div`
+clear: both; 
+`;
 
 
 /* eslint-disable react/prefer-stateless-function */
 class Header extends React.Component {
   render() {
     return (
-    
+    <div>
         <AppHeader>
         <HeaderSection>
           <HeaderTitleIcon>
@@ -53,6 +59,10 @@ class Header extends React.Component {
               </ActionButton>
         
         </AppHeader>
+        <Clearfixheader/>
+        </div>
+        
+        
      
     );
   }

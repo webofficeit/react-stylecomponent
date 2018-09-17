@@ -11,6 +11,10 @@ import messages from './messages';
 import ChoiceItem from 'components/ChoiceItem';
 import H3 from 'components/H3';
 import HR from 'components/HR';
+import { connect } from 'react-redux';
+import A from './A';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -36,12 +40,81 @@ clear: both;
 
 export default class Question extends React.Component {
   
+ 
+  constructor(props) {
+    super(props);
+    this.elements=[];
+    this.state = {
+      components: []
+    };
+  }
+
+
+
+
+  componentDidMount() {
+    for(let i=0;i<4;i++){
+      let item = `item${i}`
+      let clear = `clear${i}`
+      // push the component to elements!
+      this.elements.push(<ChoiceItem key={item} />,<Clearfix key={ clear }/>);
+      this.setState({components: this.state.components.concat(this.elements)}, function () {
+        console.log(this.state.components);
+    });
+    }
+  }
+
+  
+
+
+  addMore(elements) {
+
+    console.log("fbfgn"+this.state.components);
+    let item = `item${elements.length}`;
+    let clear = `clear${elements.length}`;
+    let y = []
+    y.push(<ChoiceItem key={item} />,<Clearfix key={ clear }/>);
+    this.setState({components: this.state.components.concat(y)}, function () {
+      console.log(this.state.components);
+  });
+   
+  }
+
+ 
+
+  renderChoiceList() {
+    if(this.state.components.lenght > 0) {
+      return (
+        <div>
+        {this.state.components}
+        </div>
+      );
+    }
+    else {
+      
+      
+        for(let i=0;i<1;i++){
+             let item = `item${i}`
+             let clear = `clear${i}`
+             // push the component to elements!
+             this.elements.push(<ChoiceItem key={item} />,<Clearfix key={ clear }/>);
+            
+        }
+      return (
+      <div>
+        {this.elements}
+      </div>
+      );
+    }
+  }
 
   render() {
+    
+        
     return (
       
         <div>
-        <Clearfix/>
+       
         <HR/>
         <FormattedMessage {...messages.questionTitle} />
         <QuestTextarea>
@@ -50,17 +123,13 @@ export default class Question extends React.Component {
       
        <div>
        <FormattedMessage {...messages.list} />
-       <div>
-         <ChoiceItem/>
-         <Clearfix/>
-         <ChoiceItem/>
-         <Clearfix/>
-         <ChoiceItem/>
-         <Clearfix/>
-         <ChoiceItem/>
-         <Clearfix/>
+       {this.state.components}
        </div>
-       </div>
+       <A href="javascript:void(0)" onClick={() => this.addMore(this.elements)}>
+       <FontAwesomeIcon icon={faPlus} />
+          Add
+        </A>
+      
         </div>
      
     );
